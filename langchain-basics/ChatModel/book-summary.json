@@ -1,0 +1,16 @@
+{
+    "name": null,
+    "input_variables": [
+        "book_input",
+        "length_input"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "\n            Write a summary of book named \"{book_input}\" with the following specifications:\n            Explanation Style: \n            ***\n                Author Name\n                Author Address\n                Introduction\n                Summary\n                Conclusion\n            ***\n            Explanation Length: {length_input}\n        ",
+    "template_format": "f-string",
+    "validate_template": true,
+    "_type": "prompt"
+}
