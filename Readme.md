@@ -1,74 +1,49 @@
-Features
-    Login
-    JWT Authentication
-    Employee CRUD
-    Department CRUD
-    Role CRUD
-    Attendance
-    Leave Management
-    Salary Management
-    Search Employees
-    Pagination
-    Sorting
-    File Upload (Resume/Profile Image)
+# Python Workspace Overview
 
-Tables:
-    Employee
-    Department
-    Role
-    Attendance
-    Leave
-    Salary
+This repository contains Python learning projects, notebooks, sample datasets, and focused subfolders for data science, machine learning, FastAPI, LangChain, pandas, and more.
 
-Phase 2: Add AI Features
+## Top-level contents
 
-For example:
+- `.venv/` - virtual environment for Python packages
+- `Readme.md` - workspace overview and documentation
+- `first-assessment.ipynb`, `third-assessment.ipynb`, `Untitled.ipynb` - Jupyter notebooks
+- `canada_per_capita_income.csv`, `homeprices.csv`, `prediction.csv` - sample datasets
+- `Second.txt`, `Third.txt` - text notes
 
-    Feature 1: Employee Profile Summary ⭐⭐⭐⭐⭐
+## Key project folders
 
-        Input
-            Name:
-            Experience:
-            Skills:
-            Projects:
-            Department:
+- `agentic-ai-course/` - agent and AI course exercises
+- `Agents/` - AI agent example scripts
+- `fastapi/` - FastAPI sample applications and Pydantic validators
+- `langchain-basics/` - LangChain examples and structured output demos
+- `MLCourse/` - machine learning notebooks and exercises
+- `MachineLearning/` - regression and ML script examples
+- `Pandas/` - pandas tutorials and sample analysis scripts
+- `Numpy/` - NumPy examples and exercises
+- `Ollama/` - Ollama model integration examples
+- `python-basic-concept/`, `python-basic-project/`, `python-basics/` - beginner Python tutorials and projects
+- `ShradhaKhapraPY/` - additional Python learning resources
+- `LangGraph/` - graph-related Python content
 
-        AI Output
+## FastAPI examples
 
-        Brajesh is a Senior MERN Developer with 8 years of experience.
-        He specializes in React, Node.js, FastAPI, LangChain and AI applications.
+- `fastapi/main.py` - app entry point
+- `fastapi/Pydantic.py`, `fastapi/Validator.py`, `fastapi/FieldValidator.py`, `fastapi/NestedModels.py`, `fastapi/ComputedField.py`, `fastapi/Serialization.py` - validation and serialization samples
 
-    Feature 2: Job Description Generator
+## LangChain examples
 
-        Input
+- `langchain-basics/CheckLang.py`
+- `langchain-basics/ChatModel/`
+- `langchain-basics/StructuredOutput/`
+- `langchain-basics/requirements.txt`
 
-            Role = Python Developer
-            Experience = 4 Years
+## Machine learning and data science
 
-        Output
+- `MLCourse/` - notebooks for regression, classification, PCA, neural networks, and more
+- `MachineLearning/` - Python scripts for simple regression and ML tasks
+- `Pandas/` - pandas examples and CSV data handling
+- `MatPlotLib/` - plotting examples
 
-            Generate professional Job Description
+## Notes
 
-    Feature 3: Email Generator
-        
-        Input
-
-            Leave Approved
-
-        Output
-
-            Generate approval email
-
-    Feature 4: Performance Review
-        
-        Input
-
-            Projects Completed
-            Attendance
-            Rating
-
-        Output
-
-            Generate professional performance review.
-
-AI Models: ollama pull gemma3:4b
+This workspace is organized around Python learning, experimentation, and applied examples across web APIs, AI agents, data science, and machine learning.
