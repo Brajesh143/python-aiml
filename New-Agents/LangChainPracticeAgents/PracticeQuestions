@@ -1,0 +1,655 @@
+LangChain — 40 Practical Agent Exercises
+1. LangChain Architecture & Core Components
+Agent 1: General Assistant
+
+Build an assistant using:
+Prompt → Model → Parser
+
+Example:
+
+Explain Python decorators.
+
+Agent 2: Modular Assistant
+
+Build:
+Prompt → Model → Tool → Parser
+
+Example:
+
+Give me an explanation and calculate a related value.
+
+Focus: Understanding how LangChain components fit together.
+
+2. Chat Models & LLM Parameters
+Agent 1: Creative Story Agent
+
+Prompt:
+
+Create a short story about an AI engineer.
+
+Experiment with:
+
+temperature=0
+temperature=0.5
+temperature=1
+Agent 2: Technical Answer Agent
+
+Prompt:
+
+Explain Node.js event loop.
+
+Experiment with:
+
+temperature
+top_k
+top_p
+
+Focus: Model behavior and sampling.
+
+3. PromptTemplate
+Agent 1: Topic Explainer
+
+Input:
+
+topic = "Python decorators"
+level = "beginner"
+
+Output:
+
+Explain decorators for a beginner.
+
+Agent 2: Interview Question Generator
+
+Input:
+
+technology = "Node.js"
+experience = "senior"
+count = 5
+
+Output:
+
+Generate 5 senior-level Node.js questions.
+
+Focus: Dynamic prompt variables.
+
+4. ChatPromptTemplate & Messages
+Agent 1: Programming Teacher
+
+Use:
+
+SystemMessage
+HumanMessage
+AIMessage
+
+Example:
+
+User: What is Python?
+AI: ...
+User: Who created it?
+Agent 2: Personal Coding Assistant
+
+System message:
+
+You are a senior backend developer.
+
+User asks:
+
+Review this Node.js code.
+
+Focus: Roles and message-based prompts.
+
+5. MessagesPlaceholder / Conversation History
+Agent 1: Simple Chatbot
+
+Maintain:
+
+chat_history = []
+
+Use MessagesPlaceholder.
+
+Test:
+
+User: I am learning Python.
+User: What should I learn next?
+Agent 2: Interview Coach
+
+Conversation:
+
+User: Ask me a Node.js question.
+AI: ...
+User: My answer is...
+AI: Evaluate it.
+
+Focus: Multi-turn conversation.
+
+6. Output Parsers
+Agent 1: List Generator
+
+Input:
+
+Give me 5 Python frameworks.
+
+Use:
+
+CommaSeparatedListOutputParser
+
+Output:
+
+["Django", "Flask", ...]
+Agent 2: JSON Extraction Agent
+
+Input:
+
+Extract name, age and role from this text.
+
+Use:
+
+JsonOutputParser
+
+Focus: Turning text into usable application data.
+
+7. Structured Output / with_structured_output()
+Agent 1: Resume Information Extractor
+
+Input:
+
+Resume text
+
+Output:
+
+class Candidate(BaseModel):
+    name: str
+    skills: list[str]
+    experience: int
+    role: str
+Agent 2: Email Classifier
+
+Input:
+
+"My payment failed and money was deducted."
+
+Output:
+
+class EmailClassification(BaseModel):
+    category: str
+    priority: str
+    sentiment: str
+
+Focus: Reliable application-ready data.
+
+8. Runnables
+Agent 1: Text Processing Runnable
+
+Create:
+
+Input
+ ↓
+RunnableLambda
+ ↓
+uppercase
+ ↓
+remove spaces
+ ↓
+output
+Agent 2: Employee Processor
+Employee input
+ ↓
+RunnableLambda
+ ↓
+calculate experience level
+ ↓
+return result
+
+Focus: Understanding individual Runnable components.
+
+9. LCEL
+Agent 1: Blog Generator
+Prompt
+ ↓
+LLM
+ ↓
+Parser
+
+Build:
+
+chain = prompt | model | parser
+Agent 2: Interview Answer Generator
+Question
+ ↓
+Prompt
+ ↓
+LLM
+ ↓
+Parser
+
+Focus: Composition using |.
+
+10. RunnableSequence / Parallel / Lambda / Passthrough
+Agent 1: Employee Analysis
+
+Sequence:
+
+Input
+ ↓
+Normalize
+ ↓
+Analyze
+ ↓
+Format
+
+Use:
+
+RunnableSequence
+RunnableLambda
+Agent 2: Resume Analyzer
+
+Run simultaneously:
+
+Resume
+ ├──→ Extract skills
+ ├──→ Extract experience
+ └──→ Extract education
+
+Use:
+
+RunnableParallel
+
+Focus: Sequential vs parallel execution.
+
+11. Document Loaders
+Agent 1: PDF Question Agent
+
+Use:
+
+PyPDFLoader
+
+Input:
+
+company_policy.pdf
+
+Ask:
+
+What is the leave policy?
+
+Agent 2: Multi-Document Reader
+
+Load:
+
+Python.txt
+Node.txt
+React.txt
+
+Ask:
+
+Which document discusses backend development?
+
+Focus: Getting external documents into LangChain.
+
+12. Documents & Text Splitters
+Agent 1: PDF Chunk Analyzer
+PDF
+ ↓
+Document
+ ↓
+RecursiveCharacterTextSplitter
+ ↓
+chunks
+
+Print:
+
+Chunk 1
+Chunk 2
+Chunk 3
+Agent 2: Chunk Comparison Agent
+
+Experiment with:
+
+chunk_size=200
+chunk_size=500
+chunk_size=1000
+
+Ask:
+
+Which chunking strategy gives better retrieval?
+
+Focus: Chunk size and overlap.
+
+13. Embeddings
+Agent 1: Semantic Similarity Agent
+
+Create:
+
+Python is a programming language.
+Python is widely used in AI.
+JavaScript is used for web development.
+
+Query:
+
+AI programming language
+
+Compare similarity.
+
+Agent 2: FAQ Similarity Agent
+
+Input:
+
+Question 1
+Question 2
+Question 3
+
+Given a new question, find the most semantically similar question.
+
+Focus: Text → vectors → semantic similarity.
+
+14. Chroma / Vector Stores
+Agent 1: FAQ Retriever
+
+Store:
+
+What is Python?
+What is LangChain?
+What is LangGraph?
+What is RAG?
+
+Ask:
+
+What framework is used for LLM applications?
+
+Retrieve relevant documents.
+
+Agent 2: Employee Knowledge Base
+
+Store employee information in Chroma.
+
+Ask:
+
+Which employees are backend developers?
+
+Focus: Vector storage and retrieval.
+
+15. Retrievers
+Agent 1: Top-K Document Retriever
+
+Build:
+
+retriever = vector_store.as_retriever(
+    search_kwargs={"k": 3}
+)
+
+Test:
+
+k=1
+k=3
+k=5
+Agent 2: Metadata Retriever
+
+Store:
+
+department
+role
+experience
+
+Ask:
+
+Find engineering employees.
+
+Focus: Retrieval strategy and metadata.
+
+16. Basic RAG
+Agent 1: PDF Chatbot
+PDF
+ ↓
+Loader
+ ↓
+Splitter
+ ↓
+Embeddings
+ ↓
+Chroma
+ ↓
+Retriever
+ ↓
+LLM
+
+Questions:
+
+What is this document about?
+
+Agent 2: Company Policy Assistant
+
+Store:
+
+leave policy
+remote policy
+HR policy
+travel policy
+
+Answer questions using only retrieved context.
+
+Focus: End-to-end RAG.
+
+17. Advanced Retrieval
+Agent 1: MultiQueryRetriever Agent
+
+Question:
+
+What are my vacation benefits?
+
+Generate multiple search queries and retrieve results.
+
+Agent 2: SelfQueryRetriever Agent
+
+Store products with metadata:
+
+name
+price
+category
+brand
+
+Ask:
+
+Find laptops under ₹80,000.
+
+Focus: Query expansion and structured retrieval.
+
+18. Conversation Memory / Chat History
+Agent 1: Personal Learning Assistant
+User: I am learning LangChain.
+User: What should I learn next?
+
+The assistant remembers the context.
+
+Agent 2: Customer Support Chatbot
+User: My order is 1234.
+User: Where is it?
+User: Cancel it.
+
+Focus: Maintaining conversational context.
+
+19. Tools & Tool Calling
+Agent 1: Calculator Agent
+
+Tools:
+
+add
+subtract
+multiply
+divide
+
+Question:
+
+What is 125 × 24?
+
+Agent 2: Utility Agent
+
+Tools:
+
+get_weather()
+get_employee_info()
+calculate()
+
+Question:
+
+What is Rahul's experience and what is 20 × 35?
+
+Focus: Tool definitions, schemas, and tool calls.
+
+20. Agents & LangSmith / Production
+Agent 1: Customer Support Agent
+
+Tools:
+
+get_order()
+cancel_order()
+create_ticket()
+
+Flow:
+
+User
+ ↓
+Agent
+ ↓
+Tool
+ ↓
+Result
+ ↓
+Final Answer
+Agent 2: Interview Preparation Agent
+
+Tools:
+
+get_question()
+evaluate_answer()
+calculate_score()
+
+Flow:
+
+Ask question
+ ↓
+User answers
+ ↓
+Evaluate
+ ↓
+Score
+ ↓
+Feedback
+
+Focus: Real agent architecture, tracing, debugging, and production thinking.
+
+Your 40-Agent Practice Roadmap
+
+Don't build them randomly. Follow this progression:
+
+PHASE 1 — Foundation
+─────────────────────
+1. General Assistant
+2. Creative Story Agent
+3. Topic Explainer
+4. Interview Generator
+5. Programming Teacher
+6. Personal Coding Assistant
+7. List Generator
+8. JSON Extractor
+
+
+PHASE 2 — Runnables & Chains
+─────────────────────────────
+9. Text Runnable
+10. Employee Processor
+11. Blog Generator
+12. Interview Answer Chain
+13. Employee Analysis
+14. Resume Parallel Analyzer
+
+
+PHASE 3 — RAG
+─────────────
+15. PDF Loader Agent
+16. Multi-document Reader
+17. Chunk Analyzer
+18. Chunk Comparison
+19. Semantic Similarity
+20. FAQ Similarity
+21. FAQ Retriever
+22. Employee Knowledge Base
+23. Top-K Retriever
+24. Metadata Retriever
+25. PDF RAG
+26. Company Policy RAG
+27. MultiQuery RAG
+28. SelfQuery RAG
+
+
+PHASE 4 — Agents
+────────────────
+29. Calculator Agent
+30. Multi-tool Utility Agent
+31. Personal Learning Assistant
+32. Customer Support Chatbot
+33. Customer Support Agent
+34. Interview Coach Agent
+
+
+PHASE 5 — Advanced Practice
+────────────────────────────
+35. Resume Analyzer
+36. Email Classifier
+37. SQL Agent
+38. Invoice Analyzer
+39. Research Agent
+40. LangGraph Customer Support Agent
+How to approach each project
+
+For every exercise, use the same learning cycle:
+
+1. Build the simplest version
+        ↓
+2. Test with 3–5 inputs
+        ↓
+3. Print intermediate results
+        ↓
+4. Understand what LangChain is doing
+        ↓
+5. Add one improvement
+        ↓
+6. Convert it into an Agent/LangGraph workflow
+
+For example, your Calculator Agent should evolve like this:
+
+Version 1
+calculate()
+
+
+      ↓
+
+
+Version 2
+model.bind_tools()
+
+
+      ↓
+
+
+Version 3
+manual tool execution
+
+
+      ↓
+
+
+Version 4
+create_agent()
+
+
+      ↓
+
+
+Version 5
+LangGraph
+
+
+      ↓
+
+
+Version 6
+multiple tools + conditional routing
