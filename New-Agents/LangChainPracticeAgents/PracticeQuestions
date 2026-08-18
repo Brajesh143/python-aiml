@@ -1,76 +1,77 @@
 LangChain — 40 Practical Agent Exercises
 1. LangChain Architecture & Core Components
-Agent 1: General Assistant
+      Agent 1: General Assistant
 
-Build an assistant using:
-Prompt → Model → Parser
+      Build an assistant using:
+      Prompt → Model → Parser
 
-Example:
+      Example:
 
-Explain Python decorators.
+      Explain Python decorators.
 
-Agent 2: Modular Assistant
+      Agent 2: Modular Assistant
 
-Build:
-Prompt → Model → Tool → Parser
+      Build:
+      Prompt → Model → Tool → Parser
 
-Example:
+      Example:
 
-Give me an explanation and calculate a related value.
+      Give me an explanation and calculate a related value.
 
-Focus: Understanding how LangChain components fit together.
+      Focus: Understanding how LangChain components fit together.
 
 2. Chat Models & LLM Parameters
-Agent 1: Creative Story Agent
+      Agent 1: Creative Story Agent
 
-Prompt:
+      Prompt:
 
-Create a short story about an AI engineer.
+      Create a short story about an AI engineer.
 
-Experiment with:
+      Experiment with:
 
-temperature=0
-temperature=0.5
-temperature=1
-Agent 2: Technical Answer Agent
+      temperature=0
+      temperature=0.5
+      temperature=1
 
-Prompt:
+      Agent 2: Technical Answer Agent
 
-Explain Node.js event loop.
+      Prompt:
 
-Experiment with:
+      Explain Node.js event loop.
 
-temperature
-top_k
-top_p
+      Experiment with:
 
-Focus: Model behavior and sampling.
+      temperature
+      top_k
+      top_p
+
+      Focus: Model behavior and sampling.
 
 3. PromptTemplate
-Agent 1: Topic Explainer
+      Agent 1: Topic Explainer
 
-Input:
+      Input:
 
-topic = "Python decorators"
-level = "beginner"
+      topic = "Python decorators"
+      level = "beginner"
 
-Output:
+      Output:
 
-Explain decorators for a beginner.
+      Explain decorators for a beginner.
 
-Agent 2: Interview Question Generator
+      Agent 2: Interview Question Generator
 
-Input:
+      Input:
 
-technology = "Node.js"
-experience = "senior"
-count = 5
+      technology = "Node.js"
+      experience = "senior"
+      count = 5
 
-Output:
+      Output:
 
-Generate 5 senior-level Node.js questions.
+      Generate 5 senior-level Node.js questions.
 
-Focus: Dynamic prompt variables.
+      Focus: Dynamic prompt variables.
 
 4. ChatPromptTemplate & Messages
 Agent 1: Programming Teacher
