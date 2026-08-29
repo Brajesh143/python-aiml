@@ -73,3 +73,122 @@
 // }
 
 
+// function createAccount(initialBalance) {
+//     let balance = initialBalance;
+
+//     return {
+//         deposit(amount) {
+//             balance += amount;
+//         },
+
+//         withdraw(amount) {
+//             if (amount <= balance) {
+//                 balance -= amount;
+//             } else {
+//                 console.log("Insufficient balance");
+//             }
+//         },
+
+//         getBalance() {
+//             return balance;
+//         }
+//     };
+// }
+
+// const account = createAccount(1000);
+
+// account.deposit(500);
+// account.withdraw(200);
+
+// console.log(account.getBalance()); // 1300
+
+// console.log(account.balance); // undefined
+
+function checkBalance(initialAmount) {
+    let balance = initialAmount;
+
+    function deposite(amount) {
+        if (amount <= 0) {
+            console.log("Please enter a valid amount")
+            return;
+        }
+        balance += amount; 
+    }
+
+    function widhdraw(amount) {
+        if (amount > balance) {
+            console.log("Insufficient balance")
+            return;
+        } else if (amount <= 0) {
+            console.log("Enter a valid amount")
+            return;
+        }
+        balance -= amount;
+    }
+
+    function getBalance() {
+        return balance;
+    }
+
+    return {
+        deposite,
+        widhdraw,
+        getBalance
+    }
+}
+
+const checkBankBalance = checkBalance(1000)
+
+checkBankBalance.deposite(500);
+checkBankBalance.widhdraw(2000)
+console.log(checkBankBalance.getBalance())
+
+
+function createMultiplier(multiplier) {
+    return function (number) {
+        return number * multiplier;
+    };
+}
+
+const multiplyBy2 = createMultiplier(2);
+const multiplyBy5 = createMultiplier(5);
+
+console.log(multiplyBy2(10)); // 20
+console.log(multiplyBy5(10)); // 50
+
+
+function memoize(fn) {
+    const cache = {};
+
+    return function (...args) {
+        const key = JSON.stringify(args);
+
+        if (key in cache) {
+            console.log("Using cached result");
+            return cache[key];
+        }
+
+        console.log("Calculating result");
+
+        const result = fn(...args);
+
+        cache[key] = result;
+
+        return result;
+    };
+}
+
+
+const memoizedAdd = memoize((a, b) => a + b);
+
+console.log(memoizedAdd(2, 3));
+// Calculating result
+// 5
+
+console.log(memoizedAdd(2, 3));
+// Using cached result
+// 5
+
+console.log(memoizedAdd(5, 10));
+// Calculating result
+// 15

@@ -1,0 +1,79 @@
+Node.js
+
+Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+It allows developers to execute JavaScript outside the browser, mainly
+for building backend applications and APIs.
+
+Node.js uses an event-driven and non-blocking I/O architecture.
+It is particularly useful for I/O-heavy applications such as REST APIs,
+real-time applications, chat applications, and microservices.
+
+
+Event Loop
+
+The Node.js Event Loop allows Node.js to handle asynchronous operations
+without blocking the main JavaScript thread.
+
+JavaScript code is executed on the call stack. When Node.js encounters
+an asynchronous operation such as a file operation, timer, or network
+request, the operation can be handled outside the main JavaScript
+execution flow.
+
+When the asynchronous operation completes, its callback is scheduled
+for execution. The Event Loop checks whether the call stack is available
+and processes pending callbacks.
+
+The Event Loop is one of the key mechanisms that allows Node.js to
+handle many concurrent I/O operations efficiently.
+
+
+Express
+
+Express.js is a lightweight web framework for Node.js.
+
+Express is commonly used to build REST APIs and web applications.
+It provides features for routing, middleware, request handling,
+response handling, and error handling.
+
+Developers can create HTTP endpoints such as GET, POST, PUT, and DELETE
+using Express.
+
+Example:
+
+app.get("/users", (req, res) => {
+    res.json({ message: "Users list" });
+});
+
+
+Middleware
+
+Middleware is a function that runs during the request-response
+lifecycle of an Express application.
+
+Middleware has access to the request object, response object, and
+the next function.
+
+Middleware can be used for logging, authentication, authorization,
+validation, request processing, and error handling.
+
+The next() function passes control to the next middleware or route
+handler.
+
+Example:
+
+app.use((req, res, next) => {
+    console.log(req.method, req.url);
+    next();
+});
+
+The typical Express request flow is:
+
+Request
+    ↓
+Middleware
+    ↓
+Middleware
+    ↓
+Route Handler
+    ↓
+Response
