@@ -192,3 +192,40 @@ console.log(memoizedAdd(2, 3));
 console.log(memoizedAdd(5, 10));
 // Calculating result
 // 15
+
+// function AuthMiddleware(req, res, next) {
+//     // Authentication logic here
+//     let isAuth = false;
+
+//     if (req.headers.authorization === "Bearer token") {
+        
+//         token = req.headers.authorization.split(" ")[1];
+
+//     }
+
+//     next();
+// }
+
+const authMiddleware = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+
+    if (token == null) {
+        return res.status(401).json({ message: 'No token provided' });
+    }
+    
+    jwt.verify(token, 'somesupersecretsecret', (err, user) => {
+        if (err) {
+            if (err.name === 'TokenExpiredError') {
+                return res.status(401).json({ message: 'Token expired' });
+            }
+            return res.status(403).json({ message: 'Invalid token' });
+        }
+
+        // Attach user info to the request object
+        req.userId = user.userId;
+        next(); // Proceed to the next middleware or route handler
+    });
+
+    next();
+};
