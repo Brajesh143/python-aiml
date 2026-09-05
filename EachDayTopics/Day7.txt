@@ -1,0 +1,220 @@
+DSA — 40 Minutes:
+=======================
+
+    Today is revision of everything you've covered so far.
+
+    Revision — 20 min
+
+        Review these patterns:
+
+            Array
+            HashMap
+            Set
+            Two Pointer
+            Sliding Window
+            Stack
+            Linked List
+            Tree
+
+        Know when each is useful.
+
+            Pattern	            Typical use
+            HashMap	            Fast lookup/counting
+            Set	                Duplicate detection
+            Sliding Window	    Subarray/substring
+            Stack	            Matching/reversal/LIFO
+            Linked List	        Pointer manipulation
+            Tree	            Hierarchical data
+            BST	                Ordered searching
+
+    DSA Practice — 20 min
+
+    Use: Sliding Window + Set/HashMap
+
+        Problem 1 — Two Sum
+        [2, 7, 11, 15]
+        target = 9
+
+        Return:
+
+            [0, 1]
+
+        Explain O(n) solution.
+
+
+        Problem 2 — Longest Substring
+            "abcabcbb"
+
+        Output: 3
+
+
+    Use a Stack.
+
+        Problem 3 — Valid Parentheses
+        "({[]})"
+
+        Output: true
+
+    Use: slow / fast and prev / current / next
+
+        Problem 4 — Linked List
+            1 → 2 → 3 → 4 → 5
+
+            Find:
+
+            Middle → 3
+
+            Then reverse:
+
+            5 → 4 → 3 → 2 → 1
+
+
+    ⭐ DSA interview test
+
+        For every problem, force yourself to say:
+
+        Brute Force
+            ↓
+        Why is it inefficient?
+            ↓
+        Optimization
+            ↓
+        Data structure / pattern
+            ↓
+        Time Complexity
+            ↓
+        Space Complexity
+
+        This is more important for your interview than simply memorizing code.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                        System Design
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+System Design — 40 Minutes:
+=============================
+    Revision — 20 min
+
+        From memory, explain:
+
+            Scaling:
+            ---------
+                Vertical
+                Horizontal
+
+
+            Architecture:
+            --------------
+                Client
+                ↓
+                DNS
+                ↓
+                Load Balancer
+                ↓
+                Multiple Servers
+                ↓
+                Redis
+                ↓
+                Database
+
+
+            Async processing:
+            ------------------
+                API
+                ↓
+                Message Queue
+                ↓
+                Workers
+
+
+            Database:
+            ----------
+
+                Revise:
+                --------
+
+                    Index
+                    Connection pooling
+                    Read-heavy workload
+                    Database bottleneck
+                    
+            Reliability:
+            ------------
+
+                Revise:
+                --------
+
+                    Timeout
+                    Retry
+                    Backoff
+                    Circuit breaker
+                    Health check
+                    Idempotency
+
+
+System Design Practice — 20 min:
+==================================
+
+    Scenario:
+    ----------
+
+        You need to design an e-commerce application supporting:
+
+        100,000 requests/minute
+
+    Features:
+    ----------
+
+        User Login
+        Product Search
+        Product Details
+        Order Creation
+        Payment
+        Email
+        Notifications
+        Analytics
+
+
+    Start with:
+    -------------
+
+                       Client
+                          ↓
+                         DNS
+                          ↓
+                   Load Balancer
+                          ↓
+             ┌────────────┼────────────┐
+             ↓            ↓            ↓
+          Server       Server       Server
+             │            │            │
+             └────────────┼────────────┘
+                          ↓
+                        Redis
+                          ↓
+                       Database
+                          ↓
+                    Message Queue
+                    /     |      \
+                 Email  Notify  Analytics
+
+    
+    Now explain:
+    -------------
+
+        Q1: Why do you need a Load Balancer?
+
+        Q2: Why should your Node.js servers be stateless?
+
+        Q3: Where would Redis help?
+
+        Q4: Which operations should go through the Message Queue?
+
+        Q5: What happens if one server crashes?
+
+        Q6: What happens if Redis crashes?
+
+        Q7: What happens if the database becomes the bottleneck?
+
+        Q8: How would you handle 100,000 requests/minute?
