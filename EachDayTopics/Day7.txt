@@ -1,3 +1,57 @@
+JavaScript + Node.js — 80 Minutes:
+====================================
+    Revision — 40 min:
+    -------------------
+    JavaScript:
+    --------------
+        Execution Context
+        Call Stack
+        Lexical Scope
+        Closure
+
+    You should be able to explain:
+
+        Function call
+            ↓
+        Execution Context
+            ↓
+        Call Stack
+            ↓
+        Execution
+            ↓
+        Return
+            ↓
+        Stack frame removed
+
+    
+    Node.js:
+    --------
+        Revise:
+        ---------
+            Event Loop
+            libuv
+            Promises
+            Microtasks
+            process.nextTick()
+            setTimeout()
+            setImmediate()
+
+        Then:
+
+            Sequential
+            vs
+            Concurrent
+
+        And:
+
+            Promise.all()
+            Promise.allSettled()
+            Retry
+            Timeout
+            Exponential Backoff
+            Rate Limiting
+            Idempotency
+
 DSA — 40 Minutes:
 =======================
 
