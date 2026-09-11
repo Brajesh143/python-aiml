@@ -1,0 +1,29 @@
+ENGINEERING DEPARTMENT POLICY
+
+The Engineering department follows a flexible work policy.
+
+Working Hours:
+Engineering employees normally work from 10:00 AM to 7:00 PM, Monday to Friday.
+Employees can adjust their working hours with prior approval from their manager.
+
+Leave Policy:
+Engineering employees receive 20 days of paid leave per year.
+Employees should submit leave requests at least 3 days in advance.
+Emergency leave can be requested without the 3-day notice period.
+
+Work From Home:
+Engineering employees can work from home up to 2 days per week.
+Additional remote work requires manager approval.
+
+Performance Review:
+Engineering employees receive a performance review twice a year.
+Performance reviews are conducted by the employee's manager and department lead.
+
+Learning and Development:
+Engineering employees can request a learning budget of up to INR 30,000 per year.
+The training or certification should be relevant to the employee's current role or career development.
+
+Security Policy:
+Employees must not share company source code, credentials, API keys, or confidential documents with unauthorized people.
+
+The Engineering department is responsible for maintaining application code, APIs, cloud infrastructure, and internal engineering tools.

@@ -33,6 +33,40 @@ print(uniqueSubstring(s))
 # "ece"
 # Length = 3
 
+def distinctK(s, k):
+  freq_win = {}
+  left = 0
+  right = 0
+  length = 0
+  maxLength = 0
+
+  for right, value in enumerate(s):
+
+    if value in freq_win:
+      freq_win[value] += 1
+    else:
+      freq_win[value] = 1
+
+    while len(freq_win) > k:
+
+      freq_win[value] = freq_win[value] - 1
+
+      if freq_win[value] == 0:
+        del freq_win[value]
+
+      left = left + 1
+  
+    length = right - left + 1
+
+    maxLength = max(maxLength, length)
+    
+  return maxLength
+    
+s = "eceba"
+k = 2
+print(distinctK(s, k))
+
+
 
 
 # 4. Longest Repeating Character Replacement ⭐⭐⭐
