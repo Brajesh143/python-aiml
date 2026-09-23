@@ -5,28 +5,18 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from model.employees import Employee
 from model.users import User
-from schema.users import LoginRequest, TokenResponse
+from schema.users import LoginRequest, TokenResponse, UserCreate
+from schema.employees import EmployeeCreate
 from auth.jwt import create_access_token
 from dependencies.auth import get_current_user, require_admin
+from auth.security import hash_password, verify_password
+from sqlalchemy import select
+from routers.user import router as users_router
+from routers.auth import router as auth_router
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-class Product(BaseModel):
-    name: str
-    price: float
-    quantity: int
-
-class EmployeeCreate(BaseModel):
-    name: str
-    email: str
-    department: str
-    salary: float
-
-class UserCreate(BaseModel):
-    email: str
-    password: str
 
 # @app.get("/products")
 # async def get_products():
@@ -104,65 +94,43 @@ def delete_employee(
         "message": f"Employee {employee_id} deleted"
     }
 
-app.post("/users")
-def create_user(
-    user: UserCreate, 
-    db: Session = Depends(get_db())
-):
 
-    new_user = User(
-            email=user.email,
-            password=user.password
-        )
 
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
-    
-    return {
-        "message": "User created successfully",
-        "employee": {
-            "id": new_user.id
-        }
-    }
+# @app.post("/login", response_model=TokenResponse)
+# def login(request: LoginRequest, db: Session = Depends(get_db)):
 
-@app.post("/login", response_model=TokenResponse)
-def login(request: LoginRequest):
+#     # user = users.get(request.email)
+#     user = db.execute(
+#         select(User).where(User.email == request.email)
+#     ).scalar_one_or_none()
 
-    user = users.get(request.email)
+#     if not user:
+#         raise HTTPException(
+#             status_code=401,
+#             detail="Invalid email or password"
+#         )
 
-    if not user:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid email or password"
-        )
+#     print("----", verify_password(request.password, user["password"]))
+#     if not verify_password(request.password, user.password):
+#         raise HTTPException(
+#             status_code=401,
+#             detail="Invalid email or password"
+#         )
 
-    if user["password"] != request.password:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid email or password"
-        )
+#     token = create_access_token(
+#         user_id=user["id"],
+#         role=user["role"]
+#     )
 
-    token = create_access_token(
-        user_id=user["id"],
-        role=user["role"]
-    )
+#     return {
+#         "access_token": token,
+#         "token_type": "bearer"
+#     }
 
-    return {
-        "access_token": token,
-        "token_type": "bearer"
-    }
 
-@app.get("/profile")
-def get_profile(
-    current_user=Depends(get_current_user)
-):
 
-    return {
-        "message": "You are authenticated",
-        "user": current_user
-    }
-
+app.include_router(auth_router)
+app.include_router(users_router)
 
 # async def get_user():
 #     await asyncio.sleep(2)
