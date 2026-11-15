@@ -1,0 +1,39 @@
+Scenario 3: E-commerce product availability
+
+Requirements:
+1. Accept product ID and requested quantity.
+2. Fetch product stock from an inventory API (simulate it initially).
+3. If stock is zero, inform the customer that the product is unavailable.
+4. If requested quantity exceeds available stock, ask the customer to reduce quantity.
+5. If stock is sufficient, proceed with order creation.
+
+
+
+Scenario 4: Employee login authentication
+Business scenario: Build a simple employee login workflow.
+
+Requirements:
+1. Accept employee email and password.
+2. Verify credentials using an authentication API (simulated).
+3. If credentials are invalid, return an authentication error.
+4. If credentials are valid, check employee status.
+5. If the employee is active, generate an access token.
+6. If the employee is inactive, deny access.
+
+
+Scenario 5: AI email classification
+
+Business scenario: Build an AI email classification workflow.
+
+An organization receives hundreds of emails daily.
+
+Requirements:
+1. Accept an email subject and body.
+2. Use an LLM to classify the email into:
+   - Sales
+   - Support
+   - Billing
+   - General
+3. Route the email to the appropriate department.
+4. Generate a department-specific acknowledgment.
+5. If classification confidence is low, route to manual review.
