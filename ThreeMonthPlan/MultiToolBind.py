@@ -42,15 +42,6 @@ prompt = input("Enter your question \n")
 tool_call_data = tool_with_llm.invoke(prompt)
 
 if tool_call_data.tool_calls:
-    # params = tool_call_data.tool_calls[0]
-
-    # selected_tool = tool_with_name[params["name"]]
-
-    # result = selected_tool.invoke(params)
-
-    # print(result.content)
-
-    print(tool_call_data.tool_calls)
 
     for tool_call in tool_call_data.tool_calls:
 
